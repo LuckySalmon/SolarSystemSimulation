@@ -10,28 +10,32 @@ g=6.674 * (10 ** -11)
 # Habitable will later be changed to depend on the star's habitable zone.
 
 class Planet:
-    def __init__(self):
-        self.name = "p" + str(random.randint(1, 15))
+    def __init__(self, sun, name):
+        self.name = name
         self.distanceFromStar = float(random.random()*10) # measured in AU
         self.velocity = float(random.random()*10) # measured in years
         self.mass = float(random.random()*10) # measured in Earths
         self.radius = float(random.random()*10) # measured in Earths
         self.volume = ((4/3)*math.pi*(self.radius**3))
         self.density = (self.mass)/self.volume
-        self.isHabitable = False
+        #if self.distanceFromStar > sun.habitableZoneInner and self.distanceFromStar < sun.habitableZoneOuter:
+        #    isHabitable = True
+        #else:
+        #    self.isHabitable = False
         self.gravity = "placeholder" # input the gravity calculation
+        self.sun = sun
 
 
 class Star:
     def __init__(self):
-        self.name = "star"
+        self.name = "s1a"
         self.radius = float(random.randint(10000, 700000000)) # measured in km
         self.numberOfPlanets = random.randint(3, 6)
-        self.planetList = []
         for i in range(self.numberOfPlanets):
-            self.planetList.append(Planet())
-
-        #print (self.planetList)
+            nameOfPlanet = "p" + str(i + 1)
+            nameOfPlanet = Planet(self.name, nameOfPlanet)
+            print (nameOfPlanet.name)
+            
         self.temperature = random.randint(2000, 27000) # measured in kelvin
         if self.temperature <= 3500:
             self.color = "Red"
