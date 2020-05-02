@@ -46,6 +46,6 @@ class Star:
         # luminosity is used in calculating the habitable zone of a star
         self.surfaceArea = 4*math.pi*self.radius ** 2
         self.luminosity = SBC*self.surfaceArea*(self.temperature ** 4)
-        # habitable zone measured in AU
+        # THIS IS INCORRECT
         self.habitableZoneInner = math.sqrt(self.luminosity)*0.95
         self.habitableZoneOuter = math.sqrt(self.luminosity)*1.37
